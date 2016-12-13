@@ -1,23 +1,35 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Page Two</ion-title>
+    <ion-title>Register</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+<ion-content padding>
+  <form (ngSubmit)="registerUser(register)">
+    <ion-item>
+      <ion-label>Fullname</ion-label>
+      <ion-input type="text" [(ngModel)]="register.Fullname" name="Fullname" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mobile No</ion-label>
+      <ion-input type="number" [(ngModel)]="register.Mobile" name="Mobile" required></ion-input>
+    </ion-item>
+   <ion-item>
+     <ion-label>Email</ion-label>
+     <ion-input type="email" [(ngModel)]="register.Email" name="Email" required></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>Address</ion-label>
+     <ion-textarea [(ngModel)]="register.Address" name="Address" required></ion-textarea>
+   </ion-item>
+   <ion-item>
+     <ion-label>Password</ion-label>
+     <ion-input type="password" [(ngModel)]="register.Passowrd" name="Passowrd" required></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>Confirm Password</ion-label>
+     <ion-input type="password" [(ngModel)]="register.ConfirmPassowrd" name="ConfirmPassowrd" required></ion-input>
+   </ion-item>
+   <button ion-button type="submit" block>Register</button>
+ </form>
 </ion-content>

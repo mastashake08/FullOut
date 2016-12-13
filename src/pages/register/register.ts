@@ -1,33 +1,32 @@
 import { Component } from '@angular/core';
-
+import { Profile } from '../../pages/profile/profile';
 import { NavController, NavParams } from 'ionic-angular';
+import {LoginService} from '../../providers/login-service';
 
 @Component({
   selector: 'page-page2',
-  templateUrl: 'register.html'
+  templateUrl: 'register.html',
+  providers: [LoginService]
 })
 export class Register {
   selectedItem: any;
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loginService : LoginService) {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
+  }
+  register = {};
 
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
+  registerUser(register) {
+    if(register.Passowrd != register.ConfirmPassowrd){
+      return;
     }
+    this.loginService.register(register)
+  .then(data => {
+    console.log("Hii", data);
+  });
+  this.navCtrl.setRoot(Profile);
   }
 
-  
 }
