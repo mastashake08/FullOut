@@ -3,7 +3,6 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 import { Login } from '../pages/login/login';
-import { Register } from '../pages/register/register';
 import { Home } from '../pages/home/home';
 import { Profile } from '../pages/profile/profile';
 import { Skills } from '../pages/skill/skill';

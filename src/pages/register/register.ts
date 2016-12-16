@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Validators, FormBuilder, FormGroup  } from '@angular/forms';
+import {Validators, FormBuilder} from '@angular/forms';
 import { Profile } from '../../pages/profile/profile';
 import { NavController, NavParams } from 'ionic-angular';
 import {LoginService} from '../../providers/login-service';
@@ -32,7 +32,7 @@ export class Register {
     // if(register.Passowrd != register.ConfirmPassowrd){
     //   return;
     // }
-    this.loginService.register(this.register.value)
+    this.loginService.login('register', this.register.value)
   .then(data => {
     console.log("Hii", data);
   });

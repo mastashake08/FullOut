@@ -7,7 +7,6 @@ import { Register } from '../pages/register/register';
 import { ForgotPassword } from '../pages/forgot-password/forgot-password';
 import { Home } from '../pages/home/home';
 import { Profile } from '../pages/profile/profile';
-import {LoginService} from '../providers/login-service';
 import { Skills } from '../pages/skill/skill';
 import { Schools } from '../pages/school/school';
 import { Programs } from '../pages/program/program';

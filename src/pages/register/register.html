@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="register" (ngSubmit)="registerUser(register)">
+  <form [formGroup]="register" (ngSubmit)="registerUser()">
     <ion-item>
       <ion-label>Fullname</ion-label>
       <ion-input type="text" formControlName="Fullname" required></ion-input>

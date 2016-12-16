@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {Validators, FormBuilder, FormGroup  } from '@angular/forms';
+import {Validators, FormBuilder} from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import {LoginService} from '../../providers/login-service';
 import {Register} from '../../pages/register/register';
@@ -30,7 +30,7 @@ export class Login {
       console.log(this.login, this.storage._db);
       this.storage._db.setItem('isLoggedIn', true);
       this.navCtrl.setRoot(Home);
-      this.loginService.login(this.login.value);
+      this.loginService.login('login', this.login.value);
       // .then(data => {
       // console.log("Hii", data);
     // });
