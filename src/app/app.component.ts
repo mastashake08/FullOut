@@ -46,8 +46,10 @@ export class MyApp {
       StatusBar.styleDefault();
       Splashscreen.hide();
       //get the value from storage
-this.storage.get("age").then((value) => {
-   alert('Storage value: '+ value);
+this.storage._db.getItem('isLoggedIn').then((value) => {
+  if(value) {
+    this.nav.setRoot(Home);
+  }
 })
     });
   }
@@ -60,6 +62,7 @@ this.storage.get("age").then((value) => {
 
   logout(){
     console.log("logout called");
+    this.storage._db.removeItem('isLoggedIn');
     this.nav.setRoot(Login);
   }
 }

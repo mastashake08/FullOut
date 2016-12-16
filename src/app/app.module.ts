@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { Login } from '../pages/login/login';
 import { Register } from '../pages/register/register';
+import { ForgotPassword } from '../pages/forgot-password/forgot-password';
 import { Home } from '../pages/home/home';
 import { Profile } from '../pages/profile/profile';
 import {LoginService} from '../providers/login-service';
@@ -18,6 +19,7 @@ import { Messages } from '../pages/messages/messages';
     MyApp,
     Login,
     Register,
+    ForgotPassword,
     Profile,
     Skills,
     Schools,
@@ -34,6 +36,7 @@ import { Messages } from '../pages/messages/messages';
     MyApp,
     Login,
     Register,
+    ForgotPassword,
     Profile,
     Skills,
     Schools,

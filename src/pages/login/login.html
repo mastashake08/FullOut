@@ -5,19 +5,22 @@
 </ion-header>
 
 <ion-content padding>
-  <form (ngSubmit)="logForm()">
+  <form [formGroup]="login" (ngSubmit)="logForm()" name="LoginForm">
    <ion-item>
      <ion-label>Email</ion-label>
-     <ion-input type="email" [(ngModel)]="login.Email" name="Email" required></ion-input>
+     <ion-input type="email" formControlName="Email" required></ion-input>
    </ion-item>
+   <!-- <ion-item *ngIf = "!login.Email"><p>Can you see me, say yes please</p></ion-item> -->
    <ion-item>
      <ion-label>Password</ion-label>
-     <ion-input type="password" [(ngModel)]="login.Passowrd" name="Passowrd" required></ion-input>
+     <ion-input type="password" formControlName="Password" required></ion-input>
    </ion-item>
+    <!-- <ion-item *ngIf = "!login.Password"><p>Can you see me, say yes please</p></ion-item> -->
    <ion-item>
-     <a style="float:right">Forgot Password ?</a>
+     <a style="float:right" [navPush]="forgotPasswordPage">Forgot Password ?</a>
    </ion-item>
    <button ion-button type="submit" block>Sign In</button>
  </form>
+
  <button ion-button block [navPush]="registerPage">Register</button>
 </ion-content>

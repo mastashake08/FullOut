@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Validators, FormBuilder, FormGroup  } from '@angular/forms';
 import { Profile } from '../../pages/profile/profile';
 import { NavController, NavParams } from 'ionic-angular';
 import {LoginService} from '../../providers/login-service';
@@ -13,16 +14,25 @@ export class Register {
   icons: string[];
   items: Array<{title: string, note: string, icon: string}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public loginService : LoginService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public loginService : LoginService, private formBuilder: FormBuilder) {
     // If we navigated to this page, we will have an item available as a nav param
   }
-  register = {};
 
-  registerUser(register) {
-    if(register.Passowrd != register.ConfirmPassowrd){
-      return;
-    }
-    this.loginService.register(register)
+  register = this.formBuilder.group({
+    Fullname: ['', Validators.required],
+    Mobile: ['', Validators.required],
+    Email:['', Validators.required],
+    Address:['', Validators.required],
+    Passowrd:['', Validators.required],
+    ConfirmPassowrd:['', Validators.required]
+  });
+
+  registerUser() {
+    // if(register.Passowrd != register.ConfirmPassowrd){
+    //   return;
+    // }
+    this.loginService.register(this.register.value)
   .then(data => {
     console.log("Hii", data);
   });

@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Home } from '../../pages/home/home';
 import 'rxjs/add/operator/map';
+import 'rxjs/Rx';
+//import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/catch';
 
 /*
   Generated class for the LoginService provider.
@@ -15,7 +19,7 @@ export class LoginService {
     console.log('Hello LoginService Provider');
   }
   data = {};
-  login(params) {
+  login(params){
     return new Promise(resolve => {
       // We're using Angular HTTP provider to request the data,
       // then on the response, it'll map the JSON data to a parsed JS object.
@@ -25,7 +29,8 @@ export class LoginService {
         .subscribe(data => {
           this.data = data;
           resolve(this.data);
-        });
+        })
+      //  .catch(this.handleError);
     });
   }
 
@@ -39,8 +44,13 @@ export class LoginService {
         .subscribe(data => {
           this.data = data;
           resolve(this.data);
-        });
+        })
+      //  .catch(this.handleError);
     });
+  }
+
+  handleError(error) {
+    console.log(error);
   }
 
 }

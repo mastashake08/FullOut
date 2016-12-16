@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {Validators, FormBuilder, FormGroup  } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import {LoginService} from '../../providers/login-service';
 import {Register} from '../../pages/register/register';
+import { ForgotPassword } from '../../pages/forgot-password/forgot-password';
 import { Home } from '../../pages/home/home';
 
 @Component({
@@ -12,19 +14,26 @@ import { Home } from '../../pages/home/home';
 })
 export class Login {
 
-  constructor(public navCtrl: NavController, public loginService : LoginService, public storage : Storage) {
+  constructor(public navCtrl: NavController, public loginService : LoginService,
+    public storage : Storage, private formBuilder: FormBuilder) {
 
   }
   registerPage = Register;
-  login = {}
-  logForm() {
-    console.log(this.login, this.storage);
-    this.storage.set('isLoggedIn', true)
-    this.navCtrl.setRoot(Home);
-    this.loginService.login(this.login)
-  .then(data => {
-    console.log("Hii", data);
-  });
-  }
+  forgotPasswordPage = ForgotPassword;
+
+    login = this.formBuilder.group({
+      Email: ['', Validators.required],
+      Password: ['', Validators.required],
+    });
+
+    logForm() {
+      console.log(this.login, this.storage._db);
+      this.storage._db.setItem('isLoggedIn', true);
+      this.navCtrl.setRoot(Home);
+      this.loginService.login(this.login.value);
+      // .then(data => {
+      // console.log("Hii", data);
+    // });
+    }
 
 }
