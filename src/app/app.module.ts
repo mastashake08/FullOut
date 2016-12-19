@@ -12,6 +12,8 @@ import { Schools } from '../pages/school/school';
 import { Programs } from '../pages/program/program';
 import { Clinics } from '../pages/clinic/clinic';
 import { Messages } from '../pages/messages/messages';
+import {VerifyOTP} from '../pages/verify-otp/verify-otp';
+import {NewPassword} from '../pages/new-password/new-password';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { Messages } from '../pages/messages/messages';
     Programs,
     Clinics,
     Messages,
-    Home
+    Home,
+    VerifyOTP
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -42,7 +45,8 @@ import { Messages } from '../pages/messages/messages';
     Programs,
     Clinics,
     Messages,
-    Home
+    Home,
+    VerifyOTP
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage]
 })

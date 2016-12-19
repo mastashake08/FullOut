@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {Validators, FormBuilder} from '@angular/forms';
 import { Storage } from '@ionic/storage';
-import {LoginService} from '../../providers/login-service';
+import {AuthService} from '../../providers/auth-service';
 import {Register} from '../../pages/register/register';
 import { ForgotPassword } from '../../pages/forgot-password/forgot-password';
 import { Home } from '../../pages/home/home';
@@ -10,11 +10,11 @@ import { Home } from '../../pages/home/home';
 @Component({
   selector: 'page-page1',
   templateUrl: 'login.html',
-  providers: [LoginService]
+  providers: [AuthService]
 })
 export class Login {
 
-  constructor(public navCtrl: NavController, public loginService : LoginService,
+  constructor(public navCtrl: NavController, public authService : AuthService,
     public storage : Storage, private formBuilder: FormBuilder) {
 
   }
@@ -25,14 +25,14 @@ export class Login {
       Email: ['', Validators.required],
       Password: ['', Validators.required],
     });
-
     logForm() {
-      console.log(this.login, this.storage._db);
-      this.storage._db.setItem('isLoggedIn', true);
       this.navCtrl.setRoot(Home);
-      this.loginService.login('login', this.login.value);
-      // .then(data => {
-      // console.log("Hii", data);
+      this.storage._db.setItem('isLoggedIn', true);
+      console.log(this.login, this.storage._db);
+    //   this.authService.authincate('login', this.login.value)
+    //   .then(data => {
+    //   this.storage._db.setItem('isLoggedIn', data);
+    //   this.navCtrl.setRoot(Home);
     // });
     }
 

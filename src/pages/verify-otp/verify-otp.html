@@ -1,5 +1,5 @@
 <!--
-  Generated template for the ForgotPassword page.
+  Generated template for the VerifyOTP page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,18 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Forgot Password</ion-title>
+    <ion-title>verifyOTP</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <form [formGroup]="forgotPassword" (ngSubmit)="FpForm()">
+  <form [formGroup]="verifyOtp" (ngSubmit)="submitOtp()">
    <ion-item>
-     <ion-label>Email</ion-label>
-     <ion-input type="email" formControlName="Email" required></ion-input>
+     <ion-label>Enter otp</ion-label>
+     <ion-input type="number" formControlName="Otp" required></ion-input>
    </ion-item>
    <button ion-button type="submit" block>Submit</button>
- </form>
+  </form>
 </ion-content>

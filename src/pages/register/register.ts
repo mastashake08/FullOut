@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import {Validators, FormBuilder} from '@angular/forms';
+import { Storage } from '@ionic/storage';
 import { Profile } from '../../pages/profile/profile';
 import { NavController, NavParams } from 'ionic-angular';
-import {LoginService} from '../../providers/login-service';
+import {AuthService} from '../../providers/auth-service';
 
 @Component({
   selector: 'page-page2',
   templateUrl: 'register.html',
-  providers: [LoginService]
+  providers: [AuthService]
 })
 export class Register {
   selectedItem: any;
@@ -15,7 +16,8 @@ export class Register {
   items: Array<{title: string, note: string, icon: string}>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public loginService : LoginService, private formBuilder: FormBuilder) {
+    public authService : AuthService, private formBuilder: FormBuilder,
+    public storage : Storage) {
     // If we navigated to this page, we will have an item available as a nav param
   }
 
@@ -29,14 +31,21 @@ export class Register {
   });
 
   registerUser() {
+    this.validate()
     // if(register.Passowrd != register.ConfirmPassowrd){
     //   return;
     // }
-    this.loginService.login('register', this.register.value)
+    this.authService.authincate('register', this.register.value)
   .then(data => {
-    console.log("Hii", data);
+    this.storage._db.setItem('isLoggedIn', data);
+    this.navCtrl.setRoot(Profile);
   });
-  this.navCtrl.setRoot(Profile);
+  }
+
+  validate() {
+    // if(this.register.Passowrd != this.register.ConfirmPassowrd){
+    //   return 'Passward and confirm password mismatch';
+    // }
   }
 
 }
