@@ -47,7 +47,7 @@ export class MyApp {
       //get the value from storage
 this.storage._db.getItem('isLoggedIn').then((value) => {
   if(value) {
-    this.nav.setRoot(Home);
+    this.nav.setRoot(Profile);
   }
 })
     });

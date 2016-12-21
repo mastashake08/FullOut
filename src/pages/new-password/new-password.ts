@@ -25,7 +25,7 @@ export class NewPassword {
     ConfirmPassowrd: ['', Validators.required]
   });
 
-  FpForm() {
+  NpForm() {
     console.log("hii");
      this.navCtrl.push(Login);
   }

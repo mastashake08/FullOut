@@ -19,15 +19,15 @@
   <form [formGroup]="editProfile" (ngSubmit)="editProfileForm()">
    <ion-item>
      <ion-label>Twitter Link</ion-label>
-     <ion-input type="url" formControlName="TwitterLink" required></ion-input>
+     <ion-input type="url" formControlName="TwitterLink"></ion-input>
    </ion-item>
    <ion-item>
      <ion-label>Insta Link</ion-label>
-     <ion-input type="url" formControlName="InstaLink" required></ion-input>
+     <ion-input type="url" formControlName="InstaLink"></ion-input>
    </ion-item>
    <ion-item>
      <ion-label>Facebook Link</ion-label>
-     <ion-input type="url" formControlName="FacebookLink" required></ion-input>
+     <ion-input type="url" formControlName="FacebookLink"></ion-input>
    </ion-item>
    <ion-item>
      <ion-label>Address</ion-label>
@@ -45,14 +45,14 @@
      <ion-label>DOB</ion-label>
      <ion-input type="date" formControlName="DOB" required></ion-input>
    </ion-item>
-   <ion-list radio-group formControlName="Gender">
+   <ion-list radio-group formControlName="Gender"required>
   <ion-item>
     <ion-label>Male</ion-label>
-    <ion-radio value="friends" checked></ion-radio>
+    <ion-radio value="male" checked></ion-radio>
   </ion-item>
   <ion-item>
     <ion-label>Female</ion-label>
-    <ion-radio value="family"></ion-radio>
+    <ion-radio value="female"></ion-radio>
   </ion-item>
 </ion-list>
    <ion-item>
@@ -76,9 +76,15 @@
      <ion-textarea formControlName="BriefIntro" required></ion-textarea>
    </ion-item>
    <ion-item>
-     <ion-label>Images</ion-label>
-     <ion-input type="email" formControlName="Images" required></ion-input>
+     <p (click)="cameraClick()">Add Images</p>
    </ion-item>
+   <ion-list>
+     <div class="image-gallary"  *ngFor="let image of images; let i = index">
+        <ion-icon name="trash" (click)="deleteImage(i)"></ion-icon>
+        <ion-img width="105" height="105" style="margin-left:4px;" src="{{image.src}}">
+        </ion-img>
+      </div>
+   </ion-list>
    <ion-item>
      <ion-label>Additional Notes</ion-label>
      <ion-textarea formControlName="AdditionalNotes" required></ion-textarea>
@@ -87,10 +93,23 @@
      <ion-label>Bio</ion-label>
      <ion-textarea formControlName="Bio" required></ion-textarea>
    </ion-item>
-   <ion-item>
+   <div>
      <ion-label>Accolades</ion-label>
-     <ion-input type="text" formControlName="Accolades" required></ion-input>
-   </ion-item>
+     <ion-list>
+       <div  *ngFor="let accolade of accoladesArray; let i = index">
+          <p>{{accolade.title}} {{accolade.year}}</p><ion-icon name="trash" (click)="deleteAccolade(i)"></ion-icon>
+        </div>
+     </ion-list>
+     <ion-item>
+       <ion-label>Title</ion-label>
+       <ion-input type="text" formControlName="AccoladesTitle"></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label>Year</ion-label>
+       <ion-input type="number" formControlName="AccoladesYear"></ion-input>
+     </ion-item>
+     <p (click)="addAccolade()">addAccolade</p>
+  </div>
    <ion-item>
      <ion-label>Video Link</ion-label>
      <ion-input type="url" formControlName="VideoLink" required></ion-input>
