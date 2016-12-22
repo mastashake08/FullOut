@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
+import { Details } from '../../pages/details/details';
 /*
   Generated class for the Home page.
 
@@ -17,6 +17,15 @@ export class Home {
 
   ionViewDidLoad() {
     console.log('Hello HomePage Page');
+  }
+  category = {};
+
+  selected() {
+    console.log("selected category", this.category);
+    let params = {
+      categoryName : this.category
+    }
+    this.navCtrl.push(Details, params);
   }
 
 }

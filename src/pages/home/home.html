@@ -15,5 +15,15 @@
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label>Category</ion-label>
+    <ion-select [(ngModel)]="category" (ionChange)="selected()">
+      <ion-option>School search</ion-option>
+      <ion-option>Programs search</ion-option>
+      <ion-option>Clinic search</ion-option>
+      <ion-option>Try Outs search</ion-option>
+      <ion-option>Offers and Scholarships search</ion-option>
+      <ion-option>Team search</ion-option>
+    </ion-select>
+  </ion-item>
 </ion-content>
