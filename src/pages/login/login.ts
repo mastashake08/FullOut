@@ -29,11 +29,11 @@ export class Login {
       this.navCtrl.setRoot(Home);
       this.storage._db.setItem('isLoggedIn', true);
       console.log(this.login, this.storage._db);
-    //   this.authService.authincate('login', this.login.value)
-    //   .then(data => {
-    //   this.storage._db.setItem('isLoggedIn', data);
-    //   this.navCtrl.setRoot(Home);
-    // });
+      this.authService.authincate('login', this.login.value)
+      .then(data => {
+      this.storage._db.setItem('isLoggedIn', data);
+      this.navCtrl.setRoot(Home);
+    });
     }
 
 }

@@ -23,6 +23,8 @@ import {Bio} from '../pages/profile/bio/bio';
 import {LookingFor} from '../pages/profile/looking-for/looking-for';
 import {Notes} from '../pages/profile/notes/notes';
 import {Vedioes} from '../pages/profile/vedioes/vedioes';
+import { SchoolDetails } from '../pages/school-detail/school-detail';
+import { ProgramDetails } from '../pages/program-details/program-details';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import {Vedioes} from '../pages/profile/vedioes/vedioes';
     Bio,
     LookingFor,
     Notes,
-    Vedioes
+    Vedioes,
+    SchoolDetails,
+    ProgramDetails
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -77,7 +81,9 @@ import {Vedioes} from '../pages/profile/vedioes/vedioes';
     Bio,
     LookingFor,
     Notes,
-    Vedioes
+    Vedioes,
+    SchoolDetails,
+    ProgramDetails
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage]
 })

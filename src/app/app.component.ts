@@ -10,6 +10,7 @@ import { Schools } from '../pages/school/school';
 import { Programs } from '../pages/program/program';
 import { Clinics } from '../pages/clinic/clinic';
 import { Messages } from '../pages/messages/messages';
+import { SchoolDetails } from '../pages/school-detail/school-detail';
 
 
 @Component({
