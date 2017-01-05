@@ -1,0 +1,38 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{viewName}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-icon name="funnel" style="float:right" (click)="filterModel()">Filter</ion-icon>
+  <ion-item>
+  <ion-searchbar
+    [(ngModel)]="dataToSearch"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput($event)"
+    (ionCancel)="onCancel($event)"
+    placeholder="{{placeholder}}">
+  </ion-searchbar>
+  </ion-item>
+  <!-- <ion-item>
+  <ion-select [(ngModel)]="placeholder" (ionChange)="selected()">
+    <ion-option  *ngFor="let option of dropdown; let i = index">{{option}}</ion-option>
+  </ion-select>
+</ion-item> -->
+  <ion-list>
+  <ion-item *ngFor="let option of schools; let i = index" (click)="goToDetails(option)">
+    <ion-avatar item-left>
+      <img src="{{option.logo}}">
+    </ion-avatar>
+    <h2>{{option.name}}</h2>
+    <h3>{{option.coachname}}</h3>
+    <p>{{option.cell_phone}}</p>
+  </ion-item>
+  </ion-list>
+
+</ion-content>

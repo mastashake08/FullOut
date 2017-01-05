@@ -1,0 +1,9 @@
+<ion-content padding>
+  <ion-list>
+    <div style="display: flex" *ngFor="let skill of skillsList" (click)=selectSkill(skill)>
+      <ion-label> {{skill.name}}</ion-label>
+       <ion-icon [name]="skill.icon"></ion-icon>
+    </div>
+    </ion-list>
+
+</ion-content>

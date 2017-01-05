@@ -1,0 +1,32 @@
+<!--
+  Generated template for the Program page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Programs</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-list>
+    <div *ngFor = "let program of programs" class="field-detail">
+      <ion-item (click)="categoryDetails('Program-details', program)">
+        <h4>{{program.name}}    {{program.date}}</h4>
+        <h5>Coach Name : {{program.coach}}</h5>
+        <span>{{program.contactNo}}</span>
+      </ion-item>
+      <button ion-button icon-right clear item-right (click)="showIntrest('program', program)" [ngClass]="{'color-yellow':program.favourite}">
+        favourite
+        <ion-icon name="star-outline"></ion-icon>
+      </button>
+  </div>
+  </ion-list>
+</ion-content>

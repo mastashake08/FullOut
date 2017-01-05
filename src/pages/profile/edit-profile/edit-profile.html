@@ -1,0 +1,116 @@
+
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Edit Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="editProfile" (ngSubmit)="editProfileForm()">
+   <ion-item>
+     <ion-label>Twitter Link</ion-label>
+     <ion-input type="url" formControlName="TwitterLink"></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>Insta Link</ion-label>
+     <ion-input type="url" formControlName="InstaLink"></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>Facebook Link</ion-label>
+     <ion-input type="url" formControlName="FacebookLink"></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>Address</ion-label>
+     <ion-textarea formControlName="Address" required></ion-textarea>
+   </ion-item>
+   <ion-item>
+     <ion-label>Height</ion-label>
+     <ion-input type="number" formControlName="Height" required></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>Weight</ion-label>
+     <ion-input type="number" formControlName="Weight" required></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>DOB</ion-label>
+     <ion-input type="date" formControlName="DOB" required></ion-input>
+   </ion-item>
+   <ion-list radio-group formControlName="Gender"required>
+  <ion-item>
+    <ion-label>Male</ion-label>
+    <ion-radio value="male" checked></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Female</ion-label>
+    <ion-radio value="female"></ion-radio>
+  </ion-item>
+</ion-list>
+   <ion-item>
+     <ion-label>Current School</ion-label>
+     <ion-input type="text" formControlName="CurrentSchool" required></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>Current Year</ion-label>
+     <ion-datetime displayFormat="YYYY" formControlName="CurrentYear" required></ion-datetime>
+     <!-- <ion-input type="year" formControlName="CurrentYear" required></ion-input> -->
+   </ion-item>
+   <ion-item>
+     <ion-label>Current GPA</ion-label>
+     <ion-input type="number" formControlName="CurrentGPA" required></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>Heighest Sat Or Act</ion-label>
+     <ion-input type="number" formControlName="HeighestSatOrAct" required></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>Brief Intro</ion-label>
+     <ion-textarea formControlName="BriefIntro" required></ion-textarea>
+   </ion-item>
+   <ion-item>
+     <p (click)="cameraClick()">Add Images</p>
+   </ion-item>
+   <ion-list>
+     <div class="image-gallary"  *ngFor="let image of images; let i = index">
+        <ion-icon name="trash" (click)="deleteImage(i)"></ion-icon>
+        <ion-img width="105" height="105" style="margin-left:4px;" src="{{image.src}}">
+        </ion-img>
+      </div>
+   </ion-list>
+   <ion-item>
+     <ion-label>Additional Notes</ion-label>
+     <ion-textarea formControlName="AdditionalNotes" required></ion-textarea>
+   </ion-item>
+   <ion-item>
+     <ion-label>Bio</ion-label>
+     <ion-textarea formControlName="Bio" required></ion-textarea>
+   </ion-item>
+   <div>
+     <ion-label>Accolades</ion-label>
+     <ion-list>
+       <div  *ngFor="let accolade of accoladesArray; let i = index">
+          <p>{{accolade.title}} {{accolade.year}}</p><ion-icon name="trash" (click)="deleteAccolade(i)"></ion-icon>
+        </div>
+     </ion-list>
+     <ion-item>
+       <ion-label>Title</ion-label>
+       <ion-input type="text" formControlName="AccoladesTitle"></ion-input>
+     </ion-item>
+     <ion-item>
+       <ion-label>Year</ion-label>
+       <ion-input type="number" formControlName="AccoladesYear"></ion-input>
+     </ion-item>
+     <p (click)="addAccolade()">addAccolade</p>
+  </div>
+   <ion-item>
+     <ion-label>Video Link</ion-label>
+     <ion-input type="url" formControlName="VideoLink" required></ion-input>
+   </ion-item>
+   <ion-item>
+     <ion-label>Push Notification</ion-label>
+     <ion-toggle formControlName="PushNotification"></ion-toggle>
+   </ion-item>
+   <button ion-button type="submit" block>Submit</button>
+  </form>
+</ion-content>
