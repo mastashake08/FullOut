@@ -8,27 +8,27 @@
   <form [formGroup]="register" (ngSubmit)="registerUser()">
     <ion-item>
       <ion-label>Fullname</ion-label>
-      <ion-input type="text" formControlName="Fullname" required></ion-input>
+      <ion-input type="text" formControlName="name" required></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Mobile No</ion-label>
-      <ion-input type="number" formControlName="Mobile" required></ion-input>
+      <ion-input type="number" formControlName="phone" required></ion-input>
     </ion-item>
    <ion-item>
      <ion-label>Email</ion-label>
-     <ion-input type="email" formControlName="Email" required></ion-input>
+     <ion-input type="email" formControlName="email" required></ion-input>
    </ion-item>
    <ion-item>
      <ion-label>Address</ion-label>
-     <ion-textarea formControlName="Address" required></ion-textarea>
+     <ion-textarea formControlName="address" required></ion-textarea>
    </ion-item>
    <ion-item>
      <ion-label>Password</ion-label>
-     <ion-input type="password" formControlName="Passowrd" required></ion-input>
+     <ion-input type="password" formControlName="password" required></ion-input>
    </ion-item>
    <ion-item>
      <ion-label>Confirm Password</ion-label>
-     <ion-input type="password" formControlName="ConfirmPassowrd" required></ion-input>
+     <ion-input type="password" formControlName="confirmpassowrd" required></ion-input>
    </ion-item>
    <button ion-button type="submit" block>Register</button>
  </form>

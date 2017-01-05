@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Validators, FormBuilder} from '@angular/forms';
 import { Storage } from '@ionic/storage';
-import { EditProfile } from '../../pages/edit-profile/edit-profile';
+import { EditProfile } from '../../pages/profile/edit-profile/edit-profile';
 import { NavController, NavParams } from 'ionic-angular';
 import {AuthService} from '../../providers/auth-service';
 
@@ -22,17 +22,17 @@ export class Register {
   }
 
   register = this.formBuilder.group({
-    Fullname: ['', Validators.required],
-    Mobile: ['', Validators.required],
-    Email:['', Validators.required],
-    Address:['', Validators.required],
-    Passowrd:['', Validators.required],
-    ConfirmPassowrd:['', Validators.required]
+    name: ['', Validators.required],
+    phone: ['', Validators.required],
+    email:['', Validators.required],
+    address:['', Validators.required],
+    password:['', Validators.required],
+    confirmpassowrd:['', Validators.required]
   });
 
   registerUser() {
-    this.validate()
-    this.navCtrl.setRoot(EditProfile);
+  //  this.validate()
+    //this.navCtrl.setRoot(EditProfile);
     // if(register.Passowrd != register.ConfirmPassowrd){
     //   return;
     // }

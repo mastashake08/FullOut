@@ -6,6 +6,7 @@ import {Bio} from './bio/bio';
 import {Accolades} from './accolades/accolades';
 import {Vedioes} from './vedioes/vedioes';
 import {LookingFor} from './looking-for/looking-for';
+import { EditProfile } from './edit-profile/edit-profile';
 /*
   Generated class for the Profile page.
 
@@ -17,31 +18,21 @@ import {LookingFor} from './looking-for/looking-for';
   templateUrl: 'profile.html'
 })
 export class Profile {
-  fullName:string;
-  currentGPA:number;
-  currentScore:number;
-  currentSchool:string;
-  address:string;
-  mobile:string;
-  email:string;
-  currentYear:number;
-  DOB:string;
-  height:string;
-  weight:string;
-  gender:string;
-  constructor(public navCtrl: NavController) {
-    this.fullName="Ranu Kumar";
-    this.currentGPA=602;
-    this.currentScore=850;
-    this.currentSchool="Sarvodaya Junior High School";
-    this.address="Nai Basti Mauranipur";
-    this.mobile="9643979627";
-    this.email="ranu.kumar@daffodilsw.com";
-    this.currentYear=2016;
-    this.DOB="20/06/2016";
-    this.height="6";
-    this.weight="72";
-    this.gender="male";
+  profile = {
+    fullName : 'Renu Sharma',
+    currentGPA : '773',
+    currentScore : '850',
+    currentSchool : "School 1",
+    address : 'Sector 31, Gurugram',
+    mobile : '+919643979627',
+    email : 'renu.sharma@daffodilsw.com',
+    currentYear : '2016',
+    DOB : '2016-12-17',
+    height : '5.6',
+    weight : '51',
+    gender : 'female',
+    notification : true,
+    disable : false
   }
   lookingForPage=LookingFor;
   albumPage=Album;
@@ -49,8 +40,14 @@ export class Profile {
   bioPage=Bio;
   accoladesPage=Accolades;
   vedioesPage=Vedioes;
+  constructor(public navCtrl: NavController) {
+
+}
 
   ionViewDidLoad() {
     console.log('Hello ProfilePage Page');
+  }
+  editProfile(){
+    this.navCtrl.push(EditProfile, {profile : this.profile});
   }
 }

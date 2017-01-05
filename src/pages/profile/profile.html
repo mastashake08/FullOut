@@ -16,21 +16,23 @@
 
 
 <ion-content padding>
+  <ion-icon ios="ios-settings" md="md-settings" style="float: right;
+    font-size: 2.2em;" (click)="editProfile()"></ion-icon>
   <ion-grid>
     <ion-row>
       <ion-col width-20 style="text-align:center;">
-        <b>Current GPA</b><br>{{currentGPA}}
+        <b>Current GPA</b><br>{{profile.currentGPA}}
       </ion-col>
       <ion-col width-60>
-        <div class="user-name" style="height:100px;background-position: center center;"><h1><b>{{fullName}}</b></h1></div>
+        <div class="user-name" style="height:100px;background-position: center center;"><h1><b>{{profile.fullName}}</b></h1></div>
         <div style="background-position: center center;">
-        {{currentSchool}}<br>
-        {{address}}-{{mobile}}<br>
-        {{email}}
+        {{profile.currentSchool}}<br>
+        {{profile.address}}-{{profile.mobile}}<br>
+        {{profile.email}}
         </div>
       </ion-col>
       <ion-col width-20 style="text-align:center;">
-        <b>Current Score</b><br>{{currentScore}}
+        <b>Current Score</b><br>{{profile.currentScore}}
       </ion-col>
     </ion-row>
 
@@ -38,8 +40,8 @@
      <ion-col width-70>
       <ion-list>
         <ion-item>
-          <ion-label><b>Push Notification</b></ion-label>
-          <ion-toggle></ion-toggle>
+          <ion-label>Push Notification</ion-label>
+          <ion-toggle [(ngModel)]="profile.notification" [disabled] = "profile.disable"></ion-toggle>
         </ion-item>
       </ion-list>
       </ion-col>
@@ -72,10 +74,10 @@
       <ion-col width-10>
 
       </ion-col>
-      <ion-col width-80>
-       <a href="#"><img src="../../assets/icon/Twitter-Logo.png"/></a>
-       <a href="#"><img src="../../assets/icon/Facebook-Logo.png"/></a>
-       <a href="#"><img src="../../assets/icon/Instagram-Logo.png"/></a>
+      <ion-col width-80 class="social-links">
+         <ion-icon name="logo-facebook" color="facebook"></ion-icon>
+         <ion-icon name="logo-twitter" color="twitter"></ion-icon>
+         <ion-icon name="logo-instagram" color="instagram"></ion-icon>
       </ion-col>
     </ion-row>
 
@@ -84,7 +86,7 @@
        <b>Current Year:</b>
       </ion-col>
       <ion-col width-60>
-        {{currentYear}}
+        {{profile.currentYear}}
       </ion-col>
     </ion-row>
 
@@ -93,7 +95,7 @@
        <b>Date Of Birth:</b>
       </ion-col>
       <ion-col width-60>
-        {{DOB}}
+        {{profile.DOB}}
       </ion-col>
     </ion-row>
 
@@ -102,7 +104,7 @@
        <b>Height:</b>
       </ion-col>
       <ion-col width-60>
-        {{height}}
+        {{profile.height}}
       </ion-col>
     </ion-row>
 
@@ -111,7 +113,7 @@
        <b>Weight:</b>
       </ion-col>
       <ion-col width-60>
-        {{weight}}
+        {{profile.weight}}
       </ion-col>
     </ion-row>
 
@@ -120,7 +122,7 @@
        <b>Gender:</b>
       </ion-col>
       <ion-col width-60>
-        {{gender}}
+        {{profile.gender}}
       </ion-col>
     </ion-row>
 

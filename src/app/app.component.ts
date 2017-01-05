@@ -5,12 +5,12 @@ import { Storage } from '@ionic/storage';
 import { Login } from '../pages/login/login';
 import { Home } from '../pages/home/home';
 import { Profile } from '../pages/profile/profile';
-import { Skills } from '../pages/skill/skill';
-import { Schools } from '../pages/school/school';
-import { Programs } from '../pages/program/program';
-import { Clinics } from '../pages/clinic/clinic';
+import { MySkills } from '../pages/my-skills/my-skills';
+import { MySchools } from '../pages/my-schools/my-schools';
+import { MyPrograms } from '../pages/my-programs/my-programs';
+import { MyClinics } from '../pages/my-clinics/my-clinics';
 import { Messages } from '../pages/messages/messages';
-import { SchoolDetails } from '../pages/school-detail/school-detail';
+import {GlobalVars} from '../config/config';
 
 
 @Component({
@@ -23,17 +23,18 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public storage : Storage) {
+  constructor(public platform: Platform, public storage : Storage,
+  public globalVars : GlobalVars) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home Page', component: Home },
       { title: 'My Profile', component: Profile },
-      { title: 'My Skills', component: Skills },
-      { title: 'My Schools', component: Schools },
-      { title: 'My Programs', component: Programs },
-      { title: 'My Clinics and Tryouts', component: Clinics },
+      { title: 'My Skills', component: MySkills },
+      { title: 'My Schools', component: MySchools },
+      { title: 'My Programs', component: MyPrograms },
+      { title: 'My Clinics and Tryouts', component: MyClinics },
       { title: 'Messages', component: Messages }
     ];
 
@@ -48,6 +49,7 @@ export class MyApp {
       //get the value from storage
 this.storage._db.getItem('isLoggedIn').then((value) => {
   if(value) {
+    this.globalVars.setData(value);
     this.nav.setRoot(Home);
   }
 })

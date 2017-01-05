@@ -7,24 +7,32 @@ import { Register } from '../pages/register/register';
 import { ForgotPassword } from '../pages/forgot-password/forgot-password';
 import { Home } from '../pages/home/home';
 import { Profile } from '../pages/profile/profile';
-import { EditProfile } from '../pages/edit-profile/edit-profile';
-import { Skills } from '../pages/skill/skill';
-import { Schools } from '../pages/school/school';
-import { Programs } from '../pages/program/program';
-import { Clinics } from '../pages/clinic/clinic';
+import { EditProfile } from '../pages/profile/edit-profile/edit-profile';
+import { MySkills } from '../pages/my-skills/my-skills';
+import { MySchools } from '../pages/my-schools/my-schools';
+import { MyPrograms } from '../pages/my-programs/my-programs';
+import { MyClinics } from '../pages/my-clinics/my-clinics';
 import { Messages } from '../pages/messages/messages';
-import {VerifyOTP} from '../pages/verify-otp/verify-otp';
-import {NewPassword} from '../pages/new-password/new-password';
-import {Details} from '../pages/details/details';
-import {Filter} from '../pages/filter/filter';
+import {VerifyOTP} from '../pages/forgot-password/verify-otp/verify-otp';
+import {NewPassword} from '../pages/forgot-password/new-password/new-password';
+import {SchoolSearch} from '../pages/home/school-search/school-search';
+import {Filter} from '../pages/home/school-search/filter/filter';
 import {Album} from '../pages/profile/album/album';
 import {Accolades} from '../pages/profile/accolades/accolades';
 import {Bio} from '../pages/profile/bio/bio';
 import {LookingFor} from '../pages/profile/looking-for/looking-for';
 import {Notes} from '../pages/profile/notes/notes';
 import {Vedioes} from '../pages/profile/vedioes/vedioes';
-import { SchoolDetails } from '../pages/school-detail/school-detail';
-import { ProgramDetails } from '../pages/program-details/program-details';
+import { SchoolDetails } from '../pages/my-schools/school-detail/school-detail';
+import { ProgramDetails } from '../pages/my-programs/program-details/program-details';
+import { AllSkills } from '../pages/my-skills/all-skills/all-skills';
+import { SkillsIHave } from '../pages/my-skills/skills-i-have/skills-i-have';
+import { SkillsIDoNotHave } from '../pages/my-skills/skills-i-do-not-have/skills-i-do-not-have';
+import { Clinics } from '../pages/my-clinics/clinics/clinics';
+import { Tryouts } from '../pages/my-clinics/tryouts/tryouts';
+import { CategorySearch } from '../pages/home/category-search/category-search';
+import {GlobalVars} from '../config/config';
+import {Loader} from '../config/loader';
 
 @NgModule({
   declarations: [
@@ -36,14 +44,14 @@ import { ProgramDetails } from '../pages/program-details/program-details';
     NewPassword,
     Profile,
     EditProfile,
-    Skills,
-    Schools,
-    Programs,
-    Clinics,
+    MySkills,
+    MyPrograms,
+    MySchools,
+    MyClinics,
     Messages,
     Home,
     VerifyOTP,
-    Details,
+    SchoolSearch,
     Filter,
     Album,
     Accolades,
@@ -52,7 +60,13 @@ import { ProgramDetails } from '../pages/program-details/program-details';
     Notes,
     Vedioes,
     SchoolDetails,
-    ProgramDetails
+    ProgramDetails,
+    AllSkills,
+    SkillsIHave,
+    SkillsIDoNotHave,
+    Clinics,
+    Tryouts,
+    CategorySearch
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -67,14 +81,14 @@ import { ProgramDetails } from '../pages/program-details/program-details';
     NewPassword,
     Profile,
     EditProfile,
-    Skills,
-    Schools,
-    Programs,
-    Clinics,
+    MySkills,
+    MySchools,
+    MyPrograms,
+    MyClinics,
     Messages,
     Home,
     VerifyOTP,
-    Details,
+    SchoolSearch,
     Filter,
     Album,
     Accolades,
@@ -83,8 +97,15 @@ import { ProgramDetails } from '../pages/program-details/program-details';
     Notes,
     Vedioes,
     SchoolDetails,
-    ProgramDetails
+    ProgramDetails,
+    AllSkills,
+    SkillsIHave,
+    SkillsIDoNotHave,
+    Clinics,
+    Tryouts,
+    CategorySearch
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage,
+  GlobalVars, Loader]
 })
 export class AppModule {}

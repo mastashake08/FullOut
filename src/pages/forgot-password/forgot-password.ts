@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Validators, FormBuilder} from '@angular/forms';
 import { NavController } from 'ionic-angular';
-import {VerifyOTP} from '../../pages/verify-otp/verify-otp';
+import {VerifyOTP} from './verify-otp/verify-otp';
 /*
   Generated class for the ForgotPassword page.
 

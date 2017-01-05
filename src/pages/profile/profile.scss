@@ -5,7 +5,7 @@ page-profile {
 }
 ion-fab-list,ion-fab-list .fab-in-list{
     width:65px;
-    
+
 }
 
 h1 {
@@ -18,11 +18,12 @@ h1 {
   text-align: center;
   top: 10%;
 }
-
-
+.social-links {
+  ion-icon {
+    font-size: 2.0em;
+    width: 60px;
+  }
 }
 
 
-
-
-
+}
