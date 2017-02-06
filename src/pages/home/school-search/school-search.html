@@ -24,8 +24,8 @@
     <ion-option  *ngFor="let option of dropdown; let i = index">{{option}}</ion-option>
   </ion-select>
 </ion-item> -->
-  <ion-list>
-  <ion-item *ngFor="let option of schools; let i = index" (click)="goToDetails(option)">
+  <ion-list [virtualScroll]="schools">
+  <ion-item *virtualItem="let option" (click)="goToDetails(option)">
     <ion-avatar item-left>
       <img src="{{option.logo}}">
     </ion-avatar>

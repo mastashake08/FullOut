@@ -19,20 +19,13 @@ export class FilterCategory {
   @Output() countChange = new EventEmitter();
 
   filterData = [
-    "GPA Requirement to get in School",
-    "GPA Requirement to stay on the team",
-    "GPA Requirement For Transfer",
-    "ACT Score Requirement",
-    "SAT Score Requirement",
-    "Other Testing",
-    "Number of hours that must be taken every semester to stay on the team",
-    "Teams",
-    "Schools that provides Scholarship",
-    "Tuition cost: this will be a fee range for the following fields"
+    "Skills",
+    'Free range of program'
   ];
 //  options = [];
   selectedFilter = null;
   selectedOptions = {};
+  showfreeRange : Boolean = false;
 
   selectOption = {};
   ionViewDidLoad() {
@@ -46,46 +39,22 @@ export class FilterCategory {
     this.selectedFilter = index;
     console.log(index);
     // this.selectOption = 'below 50';
-    this.options = [
-        {name : 'below 50'},
-        {name : 'b/w 50-75'},
-        {name : 'above 75'}
-      ]
-    if(index<5){
-      this.options = [
-        {name : 'below 50'},
-        {name : 'b/w 50-75'},
-        {name : 'above 75'}
-      ]
-    } else if(index===5){
-      this.options = []
-    } else if(index===6) {
-      this.options = [
-        {name : '100'},
-        {name : '200'},
-        {name : '300'},
-        {name : '400'},
-        {name : '500'}
-      ]
-    } else if(index === 7){
-      this.options = [
-        {name : 'All Girl'},
-        {name : 'Co-ed'},
-        {name : 'Both'}
-    ]
-    } else if(index === 8){
-      this.options = [
-        {name : 'Yes'},
-        {name : 'No'}
-      ]
-    } else {
-      this.options = [
-        {name : 'Out of state'},
-        {name : 'In state'},
-        {name : 'Average room'},
-        {name : 'Board'}
-    ]
- }
+      if(index == 1) {
+          this.options = [];
+          this.showfreeRange = true;
+          console.log("we need to create a free range here");
+      } else {
+        this.showfreeRange = false;
+        this.options = [
+          {name : 'Skill1'},
+          {name : 'Skill2'},
+          {name : 'Skill3'},
+          {name : 'Skill4'},
+          {name : 'Skill5'},
+          {name : 'Skill6'},
+        ];
+      }
+
 
   if(this.selectedOptions[index]) {
    for(let i=0;i<this.options.length;i++){

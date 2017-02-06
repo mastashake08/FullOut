@@ -1,5 +1,6 @@
+//import {IonicApp} from 'ionic/ionic';
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, MenuController} from 'ionic-angular';
 import {Validators, FormBuilder} from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import {AuthService} from '../../providers/auth-service';
@@ -17,8 +18,9 @@ export class Login {
 
   constructor(public navCtrl: NavController, public authService : AuthService,
     public storage : Storage, private formBuilder: FormBuilder,
-    public loadingCtrl: LoadingController, public globalVars : GlobalVars) {
-
+    public loadingCtrl: LoadingController, public globalVars : GlobalVars,
+    public menu : MenuController) {
+    this.menu.enable(false);
   }
   registerPage = Register;
   forgotPasswordPage = ForgotPassword;
@@ -33,16 +35,21 @@ export class Login {
     });
 
     logForm() {
-      // this.loader.present();
-      // this.navCtrl.setRoot(Home);
-      // this.storage._db.setItem('isLoggedIn', true);
-      // console.log(this.login, this.storage._db);
-      this.authService.authincate('login', this.login.value)
-      .then((data : Object) => {
-      this.globalVars.setData(data);
-      this.storage._db.setItem('isLoggedIn', data);
-      this.navCtrl.setRoot(Home);
-    });
+    this.authService.authincate('login', this.login.value).subscribe(
+                               data => {
+                                 this.globalVars.setData(data);
+                                 this.storage._db.setItem('isLoggedIn', data);
+                                 this.menu.enable(true);
+                                 this.navCtrl.setRoot(Home);
+                               },
+                                err => {
+                                    // Log errors if any
+                                    console.log(err);
+                                });
     }
+
+    onPageWillLeave() {
+    this.menu.enable(true);
+  }
 
 }

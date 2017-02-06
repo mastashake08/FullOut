@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/Rx';
-//import {Observable} from 'rxjs/Rx';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+ import 'rxjs/add/operator/map';
+// import 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import { AlertController } from 'ionic-angular';
 import {Loader} from '../config/loader';
@@ -29,33 +29,30 @@ export class AuthService {
     errorCode : ''
   };
   apiUrl = 'http://192.241.140.151/api/';
-  authincate(type, params){
-    return new Promise(resolve => {
-      // We're using Angular HTTP provider to request the data,
-      // then on the response, it'll map the JSON data to a parsed JS object.
-      // Next, we process the data and resolve the promise with the new data.
-      this.http.post(this.apiUrl + type, params)
-        .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-          resolve(this.data);
-        }, err => this.handleError(err)
-      )
-      //  .catch(this.handleError);
-    });
-  }
 
-  handleError(err){
-    console.log(err);
-    this.loader.hide();
-    let alert = this.alertCtrl.create({
-      title: 'Error',
-      subTitle: 'Something went wrong, please try again later',
-      buttons: ['OK']
-    });
-    alert.present();
-    // this.error = JSON.parse(err._body);
-    // console.log(this.error);
-  }
+  authincate(type, params) : Observable<any> {
+    let header = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({ headers: header});
+         // ...using get request
+         return this.http.post(this.apiUrl + type, params, options)
+                        // ...and calling .json() on the response to return data
+                         .map((res:Response) => res.json())
+                         //...errors if any
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
+     }
+  //
+  // handleError(err){
+  //   console.log(err);
+  //   this.loader.hide();
+  //   let alert = this.alertCtrl.create({
+  //     title: 'Error',
+  //     subTitle: 'Something went wrong, please try again later',
+  //     buttons: ['OK']
+  //   });
+  //   alert.present();
+  //   // this.error = JSON.parse(err._body);
+  //   // console.log(this.error);
+  // }
 
 }

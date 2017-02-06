@@ -19,7 +19,7 @@ import { EditProfile } from './edit-profile/edit-profile';
 })
 export class Profile {
   profile = {
-    fullName : 'Renu Sharma',
+    name : 'Renu Sharma',
     currentGPA : '773',
     currentScore : '850',
     currentSchool : "School 1",

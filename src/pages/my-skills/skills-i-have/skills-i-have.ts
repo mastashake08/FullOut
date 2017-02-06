@@ -27,13 +27,8 @@ export class SkillsIHave {
     }
   }
 
-  selectSkill(skill) {
-    skill.isChecked = !skill.isChecked;
-    if(skill.isChecked) {
-      skill.icon = "checkbox-outline";
-    } else {
-      skill.icon = "square-outline";
-    }
+  deleteSkill(id) {
+    this.skillsList.splice(id,1);
   }
 
 }

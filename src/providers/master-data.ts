@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, URLSearchParams  } from '@angular/http';
+import { Http, Headers, RequestOptions, URLSearchParams, Response  } from '@angular/http';
 import { AlertController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
-import 'rxjs/Rx';
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/catch';
 import { Dialogs } from 'ionic-native';
 import {GlobalVars} from '../config/config';
 import {Loader} from '../config/loader';
@@ -24,7 +25,7 @@ export class MasterDataService {
 
   }
 
-  get(type, dataToserach){
+  get(type, dataToserach) : Observable<any> {
     let params = new URLSearchParams();
     if(dataToserach.name){
     params.set('name', dataToserach.name); // the user's search value
@@ -32,29 +33,27 @@ export class MasterDataService {
 
     let access_token = new Headers({ 'access_token': this.authData.access_token });
     let options = new RequestOptions({ headers: access_token, search: params });
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + type, options)
-        .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-          resolve(this.data);
-        }, err => this.handleError(err))
-    });
-  }
+         // ...using get request
+         return this.http.get(this.apiUrl + type, options)
+                        // ...and calling .json() on the response to return data
+                         .map((res:Response) => res.json())
+                         //...errors if any
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
-  getDetails(type, params){
+     }
+
+  getDetails(type, params) : Observable<any> {
 
     let access_token = new Headers({ 'access_token': this.authData.access_token });
     let options = new RequestOptions({ headers: access_token});
-    return new Promise(resolve => {
-      this.http.get(this.apiUrl + type + '/' + params.id, options)
-        .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-          resolve(this.data);
-        }, err => this.handleError(err))
-    });
-  }
+         // ...using get request
+         return this.http.get(this.apiUrl + type + '/' + params.id, options)
+                        // ...and calling .json() on the response to return data
+                         .map((res:Response) => res.json())
+                         //...errors if any
+                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+
+     }
 
   handleError(err){
     this.loader.hide();

@@ -37,12 +37,23 @@ export class SchoolDetails {
   }
 
   schoolDetails(id) {
-    this.masterData.getDetails('school', {id : id})
-    .then((data:any) => {
-     this.school=data.data;
-     this.school.favourite = false;
-     this.loader.hide();
-  });
+  //   this.masterData.getDetails('school', {id : id})
+  //   .then((data:any) => {
+  //    this.school=data.data;
+  //    this.school.favourite = false;
+  //    this.loader.hide();
+  // });
+
+  this.masterData.getDetails('school', {id : id}).subscribe(
+                             data => {
+                               this.school=data.data;
+                               this.school.favourite = false;
+                               this.loader.hide();
+                             },
+                              err => {
+                                  // Log errors if any
+                                  console.log(err);
+                              });
   }
 
   markAsFavourite() {
@@ -64,8 +75,8 @@ export class SchoolDetails {
   }
 
   openBrowser(url){
-    let browser = new InAppBrowser(url, '_system');
-    browser.show();
+    let browser = new InAppBrowser(url, '_self');
+    //browser.show();
   }
 
 }

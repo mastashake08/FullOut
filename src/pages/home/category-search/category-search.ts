@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams  } from 'ionic-angular';
-import { Filter } from '../../../pages/home/school-search/filter/filter';
+import { FilterCategory } from './filter/filter';
 import { SchoolDetails } from '../../../pages/my-schools/school-detail/school-detail';
 import {MasterDataService} from '../../../providers/master-data';
 import {Loader} from '../../../config/loader';
@@ -41,11 +41,15 @@ export class CategorySearch {
   }
 
   getData(dataToSearch){
-      this.masterData.get('school', {name : dataToSearch})
-      .then((data:any) => {
-       this.schools=data.data;
-       this.loader.hide();
-    });
+    this.masterData.get('school', {name : dataToSearch}).subscribe(
+                               data => {
+                                 this.schools=data.data;
+                                 this.loader.hide();
+                               },
+                                err => {
+                                    // Log errors if any
+                                    console.log(err);
+                                });
   }
 
   onInput(event) {
@@ -67,7 +71,7 @@ export class CategorySearch {
   filterModel() {
     console.log("filter model called");
 
-    this.navCtrl.push(Filter, {selectedFilters : this.selectedFilters, callback: this.myCallbackFunction});
+    this.navCtrl.push(FilterCategory, {selectedFilters : this.selectedFilters, callback: this.myCallbackFunction});
   }
 
 goToDetails(option){

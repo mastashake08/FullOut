@@ -32,11 +32,15 @@ export class MySchools {
   }
 
   getData(dataToSearch){
-      this.masterData.get('school', {name : dataToSearch})
-      .then((data:any) => {
-       this.schools=data.data;
-       this.loader.hide();
-    });
+    this.masterData.get('school', {name : dataToSearch}).subscribe(
+                               data => {
+                                 this.schools=data.data;
+                                 this.loader.hide();
+                               },
+                                err => {
+                                    // Log errors if any
+                                    console.log(err);
+                                });
   }
 
   goToDetails(option){

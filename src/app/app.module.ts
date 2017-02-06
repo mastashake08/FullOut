@@ -17,6 +17,7 @@ import {VerifyOTP} from '../pages/forgot-password/verify-otp/verify-otp';
 import {NewPassword} from '../pages/forgot-password/new-password/new-password';
 import {SchoolSearch} from '../pages/home/school-search/school-search';
 import {Filter} from '../pages/home/school-search/filter/filter';
+import {FilterCategory} from '../pages/home/category-search/filter/filter';
 import {Album} from '../pages/profile/album/album';
 import {Accolades} from '../pages/profile/accolades/accolades';
 import {Bio} from '../pages/profile/bio/bio';
@@ -66,7 +67,8 @@ import {Loader} from '../config/loader';
     SkillsIDoNotHave,
     Clinics,
     Tryouts,
-    CategorySearch
+    CategorySearch,
+    FilterCategory
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -103,7 +105,8 @@ import {Loader} from '../config/loader';
     SkillsIDoNotHave,
     Clinics,
     Tryouts,
-    CategorySearch
+    CategorySearch,
+    FilterCategory
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, Storage,
   GlobalVars, Loader]

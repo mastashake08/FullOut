@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 import { Login } from '../pages/login/login';
@@ -24,7 +24,7 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public storage : Storage,
-  public globalVars : GlobalVars) {
+  public globalVars : GlobalVars, public menu : MenuController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -50,7 +50,7 @@ export class MyApp {
 this.storage._db.getItem('isLoggedIn').then((value) => {
   if(value) {
     this.globalVars.setData(value);
-    this.nav.setRoot(Home);
+    //this.nav.setRoot(Home);
   }
 })
     });
@@ -64,6 +64,7 @@ this.storage._db.getItem('isLoggedIn').then((value) => {
 
   logout(){
     console.log("logout called");
+    this.menu.close();
     this.storage._db.removeItem('isLoggedIn');
     this.nav.setRoot(Login);
   }

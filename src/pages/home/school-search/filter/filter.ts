@@ -40,6 +40,8 @@ export class Filter {
     if(this.navParams.get("selectedFilters")) {
       this.selectedOptions =this.navParams.get("selectedFilters");
     }
+
+    this.showOptions(0);
   }
 
   showOptions(index) {
