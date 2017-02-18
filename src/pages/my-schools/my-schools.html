@@ -1,0 +1,50 @@
+<!--
+  Generated template for the School page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Schools</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let option of schools; let i = index">
+      <ion-item (click)="goToDetails(option)">
+      <ion-avatar item-left>
+        <img src="{{option.logo}}">
+      </ion-avatar>
+      <h2>{{option.name}}</h2>
+      <h3>{{option.coachname}}</h3>
+      <p>{{option.cell_phone}}</p>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger" (click)="deleteSchool(i)">
+         <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+    <!-- <ion-item-sliding *ngFor="let school of data; let i = index">
+      <ion-item>
+        <ion-label>{{school.name}}</ion-label>
+        <ion-label>{{school.coachname}}</ion-label>
+        <ion-label>{{school.contactno}}</ion-label>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteSchool(i)">
+           <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding> -->
+  </ion-list>
+</ion-content>

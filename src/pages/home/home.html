@@ -15,5 +15,17 @@
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label>Category</ion-label>
+    <ion-select [(ngModel)]="category" (ionChange)="selected()">
+      <ion-option *ngFor="let option of categories;">{{option.title}}</ion-option>
+    </ion-select>
+  </ion-item>
+  <!-- <ion-list>
+  <ion-item *ngFor="let category of categories; let i = index" (click)="goToDetails(option)">
+    <ion-label>{{category.name}}</ion-label>
+    <ion-label>{{category.coach}}</ion-label>
+    <ion-label>{{category.contactNo}}</ion-label>
+  </ion-item>
+  </ion-list> -->
 </ion-content>

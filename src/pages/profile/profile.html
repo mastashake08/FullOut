@@ -10,11 +10,153 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>My Profile</ion-title>
+    <ion-title >My Profile</ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+  <ion-card class="school-card">
+    <button ion-button icon-right clear item-right (click)="editProfile()" style="float: right;">
+      Settings
+      <ion-icon name="settings"></ion-icon>
+    </button>
+   <ion-card-content>
+     <ion-card-title>
+       {{profile.name}}
+       </ion-card-title>
+   </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-20 style="text-align:center;">
+        <b>Current GPA</b><br>{{profile.currentGPA}}
+      </ion-col>
+      <ion-col width-60>
+        <div style="background-position: center center;">
+        {{profile.currentSchool}}<br>
+        {{profile.address}}-{{profile.mobile}}<br>
+        {{profile.email}}
+        </div>
+      </ion-col>
+      <ion-col width-20 style="text-align:center;">
+        <b>Current Score</b><br>{{profile.currentScore}}
+      </ion-col>
+    </ion-row>
 
+    <ion-row>
+     <ion-col width-70>
+      <ion-list>
+        <ion-item>
+          <ion-label>Push Notification</ion-label>
+          <ion-toggle [(ngModel)]="profile.notification" [disabled] = "profile.disable"></ion-toggle>
+        </ion-item>
+      </ion-list>
+      </ion-col>
+      <ion-col width-30>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-30>
+        <h4>Description:</h4>
+      </ion-col>
+      <ion-col width-50>
+
+      </ion-col>
+      <ion-col width-20>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-90>
+        Hey my hobbies are singing,cooking,coading and visiting new places
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-10>
+
+      </ion-col>
+      <ion-col width-10>
+
+      </ion-col>
+      <ion-col width-80 class="social-links">
+         <ion-icon name="logo-facebook" color="facebook"></ion-icon>
+         <ion-icon name="logo-twitter" color="twitter"></ion-icon>
+         <ion-icon name="logo-instagram" color="instagram"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-40>
+       <b>Current Year:</b>
+      </ion-col>
+      <ion-col width-60>
+        {{profile.currentYear}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-40>
+       <b>Date Of Birth:</b>
+      </ion-col>
+      <ion-col width-60>
+        {{profile.DOB}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-40>
+       <b>Height:</b>
+      </ion-col>
+      <ion-col width-60>
+        {{profile.height}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-40>
+       <b>Weight:</b>
+      </ion-col>
+      <ion-col width-60>
+        {{profile.weight}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-40>
+       <b>Gender:</b>
+      </ion-col>
+      <ion-col width-60>
+        {{profile.gender}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-100>
+       And <a href="#" [navPush]="lookingForPage">I am looking for</a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+
+
+
+<ion-fab bottom right >
+          <button ion-fab>More..</button>
+          <ion-fab-list side="top">
+            <button ion-fab style="background-color: #387ef5;
+    color:white;" [navPush]="vedioesPage">Vedioes</button>
+            <button ion-fab style="background-color: #387ef5;
+    color:white;" [navPush]="accoladesPage">Accolades</button>
+            <button ion-fab style="background-color: #387ef5;
+    color:white;" [navPush]="bioPage">Bio</button>
+            <button ion-fab style="background-color: #387ef5;
+    color:white;" [navPush]="notesPage">Notes</button>
+            <button ion-fab style="background-color: #387ef5;
+    color:white;" [navPush]="albumPage">Album</button>
+          </ion-fab-list>
+ </ion-fab>

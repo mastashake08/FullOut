@@ -1,3 +1,29 @@
 page-profile {
+ img {
+    max-width: 25%;
+    border: 0;
+}
+ion-fab-list,ion-fab-list .fab-in-list{
+    width:65px;
+
+}
+
+h1 {
+  color: #41292C;
+  font-family: 'Covered By Your Grace', sans-serif;
+  font-size: 21px;
+  line-height: 76px;
+  margin: 0;
+  position: relative;
+  text-align: center;
+  top: 10%;
+}
+.social-links {
+  ion-icon {
+    font-size: 2.0em;
+    width: 60px;
+  }
+}
+
 
 }

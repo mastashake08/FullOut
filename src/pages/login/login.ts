@@ -1,30 +1,55 @@
+//import {IonicApp} from 'ionic/ionic';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController, MenuController} from 'ionic-angular';
+import {Validators, FormBuilder} from '@angular/forms';
 import { Storage } from '@ionic/storage';
-import {LoginService} from '../../providers/login-service';
+import {AuthService} from '../../providers/auth-service';
 import {Register} from '../../pages/register/register';
+import { ForgotPassword } from '../../pages/forgot-password/forgot-password';
 import { Home } from '../../pages/home/home';
+import {GlobalVars} from '../../config/config';
 
 @Component({
   selector: 'page-page1',
   templateUrl: 'login.html',
-  providers: [LoginService]
+  providers: [AuthService]
 })
 export class Login {
 
-  constructor(public navCtrl: NavController, public loginService : LoginService, public storage : Storage) {
-
+  constructor(public navCtrl: NavController, public authService : AuthService,
+    public storage : Storage, private formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController, public globalVars : GlobalVars,
+    public menu : MenuController) {
+    this.menu.enable(false);
   }
   registerPage = Register;
-  login = {}
-  logForm() {
-    console.log(this.login, this.storage);
-    this.storage.set('isLoggedIn', true)
-    this.navCtrl.setRoot(Home);
-    this.loginService.login(this.login)
-  .then(data => {
-    console.log("Hii", data);
-  });
+  forgotPasswordPage = ForgotPassword;
+
+    login = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+    loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 3000
+    });
+
+    logForm() {
+    this.authService.authincate('login', this.login.value).subscribe(
+                               data => {
+                                 this.globalVars.setData(data);
+                                 this.storage._db.setItem('isLoggedIn', data);
+                                 this.menu.enable(true);
+                                 this.navCtrl.setRoot(Home);
+                               },
+                                err => {
+                                    // Log errors if any
+                                    console.log(err);
+                                });
+    }
+
+    onPageWillLeave() {
+    this.menu.enable(true);
   }
 
 }
