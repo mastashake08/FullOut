@@ -48,9 +48,10 @@ export class MyApp {
       Splashscreen.hide();
       //get the value from storage
 this.storage._db.getItem('isLoggedIn').then((value) => {
-  if(value) {
-    this.globalVars.setData(value);
-    //this.nav.setRoot(Home);
+  if(value == true) {
+  console.log(value);
+    //this.globalVars.setData(value);
+this.nav.setRoot(Home);
   }
 })
     });

@@ -20,6 +20,10 @@ export class Login {
     public storage : Storage, private formBuilder: FormBuilder,
     public loadingCtrl: LoadingController, public globalVars : GlobalVars,
     public menu : MenuController) {
+    console.log(this.storage._db.getItem('isLoggedIn'));
+    if(this.storage._db.getItem('isLoggedIn') == true){
+    this.navCtrl.setRoot(Home);
+    }
     this.menu.enable(false);
   }
   registerPage = Register;
@@ -37,6 +41,7 @@ export class Login {
     logForm() {
     this.authService.authincate('login', this.login.value).subscribe(
                                data => {
+                               console.log(data);
                                  this.globalVars.setData(data);
                                  this.storage._db.setItem('isLoggedIn', data);
                                  this.menu.enable(true);

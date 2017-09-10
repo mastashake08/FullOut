@@ -11,7 +11,8 @@
 <ion-content padding>
 
  <ion-card class="school-card">
-  <img src="{{school.logo}}"/>
+   <ion-img width="200" height="200" src="https://fullout.jyroneparker.com{{school.logo}}"></ion-img>
+
   <ion-card-content>
     <ion-card-title>
       {{school.name}}
@@ -23,7 +24,7 @@
       Message
       <ion-icon name="mail"></ion-icon>
     </button>
-    <button ion-button icon-right clear item-right (click)="showIntrest('school', school)" [ngClass]="{'color-yellow':school.favourite}">
+    <button ion-button icon-right clear item-right (click)="showIntrest('school', school)" >
       favourite
       <ion-icon name="star-outline"></ion-icon>
     </button>
@@ -35,10 +36,10 @@
    <a>{{school.website}}</a>
  </ion-item>
  <ion-item>
-   <ion-label>Contact : {{school.cell_phone}}</ion-label>
+   <ion-label>Contact : {{school.office_phone}}</ion-label>
  </ion-item>
  <ion-item>
-   <ion-label>Address : {{school.office_address}}{{school.office_phone}}</ion-label>
+   <ion-label>Address : {{school.office_address}}</ion-label>
  </ion-item>
  <ion-item>
    <ion-label>In State Tution Fee : {{school.in_state_tuition}}</ion-label>
@@ -47,6 +48,25 @@
    <ion-label>Out of State Tution Fee : {{school.out_state_tuition}}</ion-label>
  </ion-item>
  </div>
+ <hr>
+ <div class="school-teams">
+<ion-title>{{school.name}} Teams</ion-title>
+<ion-list *ngFor="let team of teams.data">
+<ion-item>
+  <ion-label>{{team.team_name}}</ion-label>
+</ion-item>
+</ion-list>
+ </div>
+ <hr>
+ <div class="school-clinics">
+<ion-title>{{school.name}} Clinics</ion-title>
+<ion-list *ngFor="let clinic of clinics.data">
+<ion-item>
+  <ion-label>{{clinic.name}}</ion-label>
+</ion-item>
+</ion-list>
+ </div>
+
     <!-- <h3>Coaches</h3>
     <ion-list>
       <ion-item *ngFor = "let coach of school.coaches">
