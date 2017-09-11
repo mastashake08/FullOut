@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ModalController, NavController, ViewController } from 'ionic-angular';
 import {MasterDataService} from '../../providers/master-data';
 import {Loader} from '../../config/loader';
+
 
 /*
   Generated class for the Messages page.
@@ -23,8 +24,9 @@ export class Messages {
     data: []
   }
   };
+  message = '';
   dataReady = false;
-  constructor(public navCtrl: NavController, public dataService : MasterDataService, public loader: Loader) {
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public dataService : MasterDataService, public loader: Loader) {
   this.loader.show();
   this.dataService.get('message',null).subscribe(
                              data => {
@@ -39,9 +41,28 @@ export class Messages {
                                   console.log(err);
                               });
   }
-
+  reply(id) {
+  let replyModal = this.modalCtrl.create(Reply, { id: id });
+  replyModal.present();
+  }
   ionViewDidLoad() {
     console.log('Hello MessagesPage Page');
   }
+
+}
+
+@Component({
+templateUrl: 'message-modal/message-modal.html'
+})
+class Reply {
+
+ constructor(public viewCtrl: ViewController) {
+
+ }
+
+ dismiss() {
+   let data = { 'id': '0' };
+   this.viewCtrl.dismiss(data);
+ }
 
 }

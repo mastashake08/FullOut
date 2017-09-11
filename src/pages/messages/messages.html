@@ -18,10 +18,10 @@
 <ion-content padding>
   <ion-label>Received Messages</ion-label>
   <ion-list  *ngFor="let message of messages.received.data; let i = index" no-lines>
-    <ion-item>{{message.sender.name}} - {{message.message}}</ion-item>
+    <ion-item>{{message.sender.name}} - {{message.message}} <ion-icon name="send" (click)="reply(message.sender.id)"></ion-icon></ion-item> 
   </ion-list>
   <ion-label>Sent Messages</ion-label>
   <ion-list *ngFor="let message of messages.sent.data; let i = index" no-lines>
-    <ion-item>{{message.receiver.name}} - {{message.message}}</ion-item>
+    <ion-item>{{message.receiver.name}} - {{message.message}} <ion-icon name="send" (click)="reply(message.receiver.id)"></ion-icon></ion-item>
   </ion-list>
 </ion-content>
