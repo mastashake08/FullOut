@@ -17,10 +17,10 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item-sliding *ngFor="let option of schools; let i = index">
+    <ion-item-sliding *ngFor="let option of schools.data; let i = index">
       <ion-item (click)="goToDetails(option)">
       <ion-avatar item-left>
-        <img src="{{option.logo}}">
+        <ion-img width="80" height="80" src="https://fullout.jyroneparker.com{{option.logo}}"></ion-img>
       </ion-avatar>
       <h2>{{option.name}}</h2>
       <h3>{{option.coachname}}</h3>

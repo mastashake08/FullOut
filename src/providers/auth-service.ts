@@ -28,7 +28,7 @@ export class AuthService {
     description : '',
     errorCode : ''
   };
-  apiUrl = 'http://192.241.140.151/api/';
+  apiUrl = 'https://fullout.jyroneparker.com/api/';
 
   authincate(type, params) : Observable<any> {
     let header = new Headers({'Content-Type': 'application/json'});
@@ -38,7 +38,7 @@ export class AuthService {
                         // ...and calling .json() on the response to return data
                          .map((res:Response) => res.json())
                          //...errors if any
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+                         .catch((error:any) => Observable.throw(error.error || 'Server error'));
 
      }
   //

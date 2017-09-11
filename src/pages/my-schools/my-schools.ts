@@ -34,7 +34,7 @@ export class MySchools {
   getData(dataToSearch){
     this.masterData.get('school', {name : dataToSearch}).subscribe(
                                data => {
-                                 this.schools=data.data;
+                                 this.schools=data.schools;
                                  this.loader.hide();
                                },
                                 err => {

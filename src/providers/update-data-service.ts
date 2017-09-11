@@ -26,7 +26,7 @@ export class UpdateDataService {
     description : '',
     errorCode : ''
   };
-  apiUrl = 'http://192.241.140.151/api/';
+  apiUrl = 'https://fullout.jyroneparker.com/api/';
   markfav(type, params){
     return new Promise(resolve => {
       // We're using Angular HTTP provider to request the data,

@@ -7,6 +7,8 @@ import {Accolades} from './accolades/accolades';
 import {Vedioes} from './vedioes/vedioes';
 import {LookingFor} from './looking-for/looking-for';
 import { EditProfile } from './edit-profile/edit-profile';
+import {MasterDataService} from '../../providers/master-data';
+
 /*
   Generated class for the Profile page.
 
@@ -15,9 +17,12 @@ import { EditProfile } from './edit-profile/edit-profile';
 */
 @Component({
   selector: 'page-profile',
-  templateUrl: 'profile.html'
+  templateUrl: 'profile.html',
+  providers: [MasterDataService]
 })
 export class Profile {
+
+
   profile = {
     name : 'Renu Sharma',
     currentGPA : '773',
@@ -40,12 +45,22 @@ export class Profile {
   bioPage=Bio;
   accoladesPage=Accolades;
   vedioesPage=Vedioes;
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public dataService : MasterDataService) {
+  this.dataService.get('user',null).subscribe(
+                             data => {
+                             console.log(data);
+                             this.profile.name=data.name
 
+                             },
+                              err => {
+                                  // Log errors if any
+                                  console.log(err);
+                              });
 }
 
   ionViewDidLoad() {
     console.log('Hello ProfilePage Page');
+
   }
   editProfile(){
     this.navCtrl.push(EditProfile, {profile : this.profile});

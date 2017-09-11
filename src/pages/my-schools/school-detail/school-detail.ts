@@ -29,6 +29,9 @@ export class SchoolDetails {
   listTryouts : boolean = false;
   listTeams : boolean = false;
   school : any = {};
+  clinics: Array<Object> = [];
+  tryouts: Array<Object> = [];
+  teams: Array<Object> = [];
 
   ionViewDidLoad() {
     this.loader.show();
@@ -37,16 +40,12 @@ export class SchoolDetails {
   }
 
   schoolDetails(id) {
-  //   this.masterData.getDetails('school', {id : id})
-  //   .then((data:any) => {
-  //    this.school=data.data;
-  //    this.school.favourite = false;
-  //    this.loader.hide();
-  // });
-
   this.masterData.getDetails('school', {id : id}).subscribe(
                              data => {
-                               this.school=data.data;
+                               this.school=data.school;
+                               this.clinics = data.clinics;
+                               this.tryouts = data.tryouts;
+                               this.teams = data.teams;
                                this.school.favourite = false;
                                this.loader.hide();
                              },
