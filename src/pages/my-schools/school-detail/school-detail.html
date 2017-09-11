@@ -66,6 +66,15 @@
 </ion-item>
 </ion-list>
  </div>
+ <hr>
+ <div class="school-tryouts">
+<ion-title>{{school.name}} Tryouts</ion-title>
+<ion-list *ngFor="let tryout of tryouts.data">
+<ion-item>
+  <ion-label>{{tryout.name}}</ion-label>
+</ion-item>
+</ion-list>
+ </div>
 
     <!-- <h3>Coaches</h3>
     <ion-list>

@@ -2,9 +2,9 @@
 
 <ion-content padding>
   <ion-list>
-    <div style="display: flex" *ngFor="let skill of skillsList" (click)=selectSkill(skill)>
-      <ion-label> {{skill.name}}</ion-label>
-       <ion-icon [name]="skill.icon"></ion-icon>
+    <div style="display: flex"  (click)=selectSkill(skill)>
+      <ion-label> Spring Floor Tumbling Skills</ion-label>
+       <ion-checkbox [(ngModel)]="skills"></ion-checkbox>
     </div>
     </ion-list>
 
